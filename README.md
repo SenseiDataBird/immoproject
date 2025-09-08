@@ -1,2 +1,3 @@
 # immoproject
-Votre Use Case Data&amp;IA clé en main : nettoyage de données, modèle régression linéaire, démo GitHub/Docker/Airflow/Kubernetes.
+Votre Use Case Data&amp;IA clé en main : 
+du nettoyage de la donnée jusqu'au modèle de régression linéaire.
