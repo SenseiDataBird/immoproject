@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: immo-pipeline-once
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: pipeline
+          image: immo-demo:latest # Remplacez par l'image poussée
+          imagePullPolicy: IfNotPresent
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -e
+              echo "1) Prétraitement"
+              cd /opt/airflow/data && python /opt/airflow/scripts/data_processing.py
+              echo "2) Entraînement"
+              cd /opt/airflow && python /opt/airflow/scripts/model_training.py
+  backoffLimit: 0
