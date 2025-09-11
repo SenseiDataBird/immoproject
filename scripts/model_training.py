@@ -40,6 +40,11 @@ print("\nRésultats de l'évaluation du modèle :")
 print(f"RMSE : {rmse:.2f}")
 print(f"R² : {r2:.4f}")
 
+# Écriture des métriques dans un fichier (pour Airflow/K8s)
+metrics_path = "/opt/airflow/data/metrics.txt"
+with open(metrics_path, "w", encoding="utf-8") as f:
+    f.write(f"RMSE: {rmse:.2f}\nR2: {r2:.4f}\n")
+
 # Affichage de l'importance des features
 feature_importance = pd.DataFrame({
     'Feature': X.columns,
